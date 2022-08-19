@@ -8,7 +8,7 @@ template<typename T>
 void print_vec(std::vector<T>& vec) {
     std::cout << "{ ";
     each(vec, [](auto& x) { std::cout << x << " "; });
-    std::cout << "}" << std::endl;
+    std::cout << "}";
 }
 
 void optionals() {
@@ -52,7 +52,7 @@ void transformations() {
     std::cout << "Attempting to map it with + 1..." << std::endl;
     std::vector<uint32_t> vmapped { map(v, [](auto& x) { return x + 1; }) };
     std::cout << "The mapped vec is: ";
-    print_vec(vmapped);
+    print_vec(vmapped); std::cout << std::endl;
 
     std::cout << std::endl << "The vector is: {2, 4, 6, 8}." << std::endl;
     std::vector<uint8_t> vallany {2, 4, 6, 8};
@@ -60,6 +60,15 @@ void transformations() {
     std::cout << "all(even): " << (all(vallany, [](auto& x) { return x % 2 == 0; }) ? "yes" : "no") << std::endl;
     std::cout << "any(= 2): " << (any(vallany, [](auto& x) { return x == 2; }) ? "yes" : "no") << std::endl;
     std::cout << "all(= 2): " << (all(vallany, [](auto& x) { return x == 2; }) ? "yes" : "no") << std::endl;
+
+    std::cout << std::endl << "Try filtering all even elements from ";
+    std::vector<uint16_t> vf {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    print_vec(vf); std::cout << std::endl;
+    filter(vf, [](auto& x) { return x % 2 == 0; });
+    print_vec(vf); std::cout << std::endl;
+    std::cout << "Filter <= 6: ";
+    filter(vf, [](auto& x) { return x <= 6; });
+    print_vec(vf); std::cout << std::endl;
     std::cout << "=========================" << std::endl;
 }
 

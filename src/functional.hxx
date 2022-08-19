@@ -58,4 +58,10 @@ bool any(std::vector<T>& vec, F f) {
     return std::any_of(vec.begin(), vec.end(), f);
 }
 
+template<typename T, typename F>
+std::vector<T>& filter(std::vector<T>& vec, F f) {
+    std::erase_if(vec, [=](auto& x) { return f(x) == false; });
+    return vec;
+}
+
 #endif // FUNCTIONAL_HXX
