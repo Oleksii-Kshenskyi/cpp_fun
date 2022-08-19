@@ -4,8 +4,9 @@
 
 #include <memory>
 #include <exception>
+#include <algorithm>
 
-
+// ===== TYPES ======
 template<typename T>
 class Option {
     private:
@@ -33,5 +34,18 @@ class Option {
             return Option<T>();
         }
 };
+
+// ====== ALGORITHMS ========
+template<typename T, typename F>
+std::vector<T>& map(std::vector<T>& vec, F f) {
+    std::transform(vec.begin(), vec.end(), vec.begin(), f);
+    return vec;
+}
+
+template<typename T, typename F>
+std::vector<T>& each(std::vector<T>& vec, F f) {
+    std::for_each(vec.begin(), vec.end(), f);
+    return vec;
+}
 
 #endif // FUNCTIONAL_HXX
