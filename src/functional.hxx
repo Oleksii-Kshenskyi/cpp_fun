@@ -48,4 +48,14 @@ std::vector<T>& each(std::vector<T>& vec, F f) {
     return vec;
 }
 
+template<typename T, typename F>
+bool all(std::vector<T>& vec, F f) {
+    return std::all_of(vec.begin(), vec.end(), f);
+}
+
+template<typename T, typename F>
+bool any(std::vector<T>& vec, F f) {
+    return std::any_of(vec.begin(), vec.end(), f);
+}
+
 #endif // FUNCTIONAL_HXX

@@ -53,6 +53,13 @@ void transformations() {
     std::vector<uint32_t> vmapped { map(v, [](auto& x) { return x + 1; }) };
     std::cout << "The mapped vec is: ";
     print_vec(vmapped);
+
+    std::cout << std::endl << "The vector is: {2, 4, 6, 8}." << std::endl;
+    std::vector<uint8_t> vallany {2, 4, 6, 8};
+    std::cout << "all(odd): " << (all(vallany, [](auto& x) { return x % 2 != 0; }) ? "yes" : "no") << std::endl;
+    std::cout << "all(even): " << (all(vallany, [](auto& x) { return x % 2 == 0; }) ? "yes" : "no") << std::endl;
+    std::cout << "any(= 2): " << (any(vallany, [](auto& x) { return x == 2; }) ? "yes" : "no") << std::endl;
+    std::cout << "all(= 2): " << (all(vallany, [](auto& x) { return x == 2; }) ? "yes" : "no") << std::endl;
     std::cout << "=========================" << std::endl;
 }
 
